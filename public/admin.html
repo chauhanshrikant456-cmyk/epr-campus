@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EPR Admin Dashboard — Payments & Orders</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="bg-slate-100 min-h-screen text-slate-800 p-6">
+  <div class="max-w-7xl mx-auto">
+    
+    <div class="flex justify-between items-center mb-6">
+      <div>
+        <h1 class="text-2xl font-black text-slate-900 flex items-center gap-2">
+          <i class="fa-solid fa-print text-blue-600"></i> EPR Management & Payment Hub
+        </h1>
+        <p class="text-xs text-slate-500">Live tracker for NIET, GL Bajaj, ITS, KCC, and Accurate Institute</p>
+      </div>
+      <button onclick="fetchOrders()" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-4 py-2 rounded-lg flex items-center gap-1.5 transition">
+        <i class="fa-solid fa-rotate"></i> Refresh Orders
+      </button>
+    </div>
+
+    <div class="bg-white rounded-xl shadow border border-slate-200 overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse text-xs">
+          <thead class="bg-slate-50 border-b border-slate-200 uppercase text-slate-600 font-bold">
+            <tr>
+              <th class="p-3">Order ID</th>
+              <th class="p-3">Student Info</th>
+              <th class="p-3">Pickup Location</th>
+              <th class="p-3">Service</th>
+              <th class="p-3">Amount</th>
+              <th class="p-3">File</th>
+              <th class="p-3">UPI / UTR Number</th>
+              <th class="p-3">Payment Status</th>
+              <th class="p-3">Job Status</th>
+            </tr>
+          </thead>
+          <tbody id="ordersBody" class="divide-y divide-slate-100">
+            <tr><td colspan="9" class="p-4 text-center">Loading orders...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    async function fetchOrders() {
+      const res = await fetch('/api/orders');
+      const orders = await res.json();
+      const body = document.getElementById('ordersBody');
+      body.innerHTML = '';
+
+      if (orders.length === 0) {
+        body.innerHTML = '<tr><td colspan="9" class="p-4 text-center text-slate-400">No orders placed yet.</td></tr>';
+        return;
+      }
+
+      orders.forEach(o => {
+        const fileHtml = o.file_path 
+          ? `<a href="/uploads/${o.file_path}" target="_blank" download class="text-blue-600 font-bold hover:underline flex items-center gap-1"><i class="fa-solid fa-download"></i> Download</a>`
+          : '<span class="text-slate-400">None</span>';
+
+        const row = document.createElement('tr');
+        row.className = 'hover:bg-slate-50';
+        row.innerHTML = `
+          <td class="p-3 font-bold text-slate-900">#${o.id}</td>
+          <td class="p-3">
+            <span class="font-bold text-slate-900">${o.name}</span><br>
+            <a href="tel:${o.phone}" class="text-blue-600 hover:underline">${o.phone}</a>
+          </td>
+          <td class="p-3 text-indigo-700 font-medium">${o.college_pickup}</td>
+          <td class="p-3 font-semibold">${o.service}</td>
+          <td class="p-3 font-black text-slate-900">₹${o.total_amount}</td>
+          <td class="p-3">${fileHtml}</td>
+          <td class="p-3">
+            <span class="text-[10px] text-slate-400 block">${o.upi_id_used || '—'}</span>
+            <code class="bg-yellow-100 text-yellow-900 px-1.5 py-0.5 rounded font-mono font-bold">${o.utr_number}</code>
+          </td>
+          <td class="p-3">
+            <select onchange="updateRecord(${o.id}, 'payment_status', this.value)" class="border text-[11px] p-1.5 rounded-lg bg-white font-bold ${o.payment_status === 'Paid Verified' ? 'text-emerald-700 border-emerald-300' : 'text-amber-700 border-amber-300'}">
+              <option value="Unpaid" ${o.payment_status === 'Unpaid' ? 'selected' : ''}>Unpaid</option>
+              <option value="Verification Underway" ${o.payment_status === 'Verification Underway' ? 'selected' : ''}>Review UTR</option>
+              <option value="Paid Verified" ${o.payment_status === 'Paid Verified' ? 'selected' : ''}>✅ Paid Verified</option>
+            </select>
+          </td>
+          <td class="p-3">
+            <select onchange="updateRecord(${o.id}, 'order_status', this.value)" class="border text-[11px] p-1.5 rounded-lg bg-white font-semibold">
+              <option value="Received" ${o.order_status === 'Received' ? 'selected' : ''}>Received</option>
+              <option value="Printed" ${o.order_status === 'Printed' ? 'selected' : ''}>Printed</option>
+              <option value="Dispatched" ${o.order_status === 'Dispatched' ? 'selected' : ''}>Dispatched to Gate</option>
+              <option value="Completed" ${o.order_status === 'Completed' ? 'selected' : ''}>Completed</option>
+            </select>
+          </td>
+        `;
+        body.appendChild(row);
+      });
+    }
+
+    async function updateRecord(id, field, val) {
+      const payload = {};
+      payload[field] = val;
+      await fetch(`/api/orders/${id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      fetchOrders();
+    }
+
+    fetchOrders();
+  </script>
+</body>
+</html>
