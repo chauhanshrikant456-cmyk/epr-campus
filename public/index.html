@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Easy Print Re (EPR) — Campus Print & Student Hub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+  </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-blue-600 selection:text-white">
+
+  <!-- Notification Bar -->
+  <div class="bg-gradient-to-r from-blue-700 via-indigo-700 to-blue-800 text-white text-xs py-2 px-4 text-center font-medium">
+    ⚡ <strong>Night Cut-off 11:30 PM:</strong> Get Morning Delivery outside college gates by 8:00 AM!
+  </div>
+
+  <!-- Header -->
+  <header class="bg-white/95 backdrop-blur-md border-b border-slate-200 sticky top-0 z-30">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="h-10 w-10 rounded-xl bg-blue-600 flex items-center justify-center text-white shadow-md shadow-blue-500/20">
+          <i class="fa-solid fa-print text-lg"></i>
+        </div>
+        <div>
+          <span class="font-black text-lg text-slate-900 tracking-tight flex items-center gap-1.5">
+            EASY PRINT RE <span class="text-[10px] bg-blue-50 text-blue-700 font-extrabold px-1.5 py-0.5 rounded border border-blue-200">EPR</span>
+          </span>
+          <p class="text-[11px] text-slate-400 font-medium">Knowledge Park 1 &bull; Greater Noida</p>
+        </div>
+      </div>
+      <a href="tel:7291016819" class="text-xs bg-slate-900 hover:bg-blue-600 text-white font-bold px-3 py-2 rounded-xl transition">
+        <i class="fa-solid fa-phone mr-1"></i> 7291016819
+      </a>
+    </div>
+  </header>
+
+  <!-- Route Schedule -->
+  <section class="max-w-6xl mx-auto px-4 pt-6">
+    <div class="bg-white border border-slate-200 rounded-2xl p-4 shadow-sm">
+      <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 mb-3">
+        <h2 class="text-xs font-bold text-slate-900 uppercase tracking-wide">Campus Delivery Timeline</h2>
+        <span class="text-[11px] bg-emerald-50 text-emerald-700 font-bold px-2.5 py-0.5 rounded-full border border-emerald-200 w-fit">
+          Morning: 8:00 AM &bull; Evening: 5:00 PM
+        </span>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 text-center text-xs">
+        <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+          <strong class="text-slate-900 block">NIET</strong>
+          <span class="text-slate-500 text-[11px]">8:00 AM | 5:00 PM</span>
+        </div>
+        <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+          <strong class="text-slate-900 block">GL Bajaj</strong>
+          <span class="text-slate-500 text-[11px]">8:30 AM | 5:15 PM</span>
+        </div>
+        <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+          <strong class="text-slate-900 block">ITS Eng</strong>
+          <span class="text-slate-500 text-[11px]">8:45 AM | 5:30 PM</span>
+        </div>
+        <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+          <strong class="text-slate-900 block">KCC College</strong>
+          <span class="text-slate-500 text-[11px]">9:00 AM | 5:45 PM</span>
+        </div>
+        <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100 col-span-2 sm:col-span-1">
+          <strong class="text-slate-900 block">Accurate</strong>
+          <span class="text-slate-500 text-[11px]">9:15 AM | 6:00 PM</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Order Form Layout -->
+  <main class="max-w-6xl mx-auto px-4 py-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Left Config Form -->
+      <div class="lg:col-span-7">
+        <form id="eprOrderForm" enctype="multipart/form-data" class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-7 shadow-sm space-y-6">
+          
+          <div>
+            <span class="text-[11px] font-extrabold text-blue-600 uppercase tracking-widest">Step 1 of 3</span>
+            <h3 class="text-base font-black text-slate-900 mt-0.5">Choose Service</h3>
+          </div>
+
+          <!-- Service Grid -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 text-xs">
+            <label class="cursor-pointer">
+              <input type="radio" name="service" value="Printing" checked class="peer sr-only" onchange="switchService(this.value)">
+              <div class="peer-checked:border-blue-600 peer-checked:bg-blue-50/50 peer-checked:text-blue-900 border border-slate-200 rounded-xl p-3 text-center transition">
+                <i class="fa-solid fa-file-pdf text-base mb-1 text-blue-600 block"></i>
+                <strong>Print Document</strong>
+                <span class="block text-[10px] text-slate-400 mt-0.5">₹3 B&W &bull; ₹7 Color</span>
+              </div>
+            </label>
+
+            <label class="cursor-pointer">
+              <input type="radio" name="service" value="Govt Exam Form" class="peer sr-only" onchange="switchService(this.value)">
+              <div class="peer-checked:border-blue-600 peer-checked:bg-blue-50/50 peer-checked:text-blue-900 border border-slate-200 rounded-xl p-3 text-center transition">
+                <i class="fa-solid fa-graduation-cap text-base mb-1 text-emerald-600 block"></i>
+                <strong>Govt Exam</strong>
+                <span class="block text-[10px] text-slate-400 mt-0.5">₹100 flat</span>
+              </div>
+            </label>
+
+            <label class="cursor-pointer">
+              <input type="radio" name="service" value="Certificates" class="peer sr-only" onchange="switchService(this.value)">
+              <div class="peer-checked:border-blue-600 peer-checked:bg-blue-50/50 peer-checked:text-blue-900 border border-slate-200 rounded-xl p-3 text-center transition">
+                <i class="fa-solid fa-id-card text-base mb-1 text-amber-600 block"></i>
+                <strong>Certificates</strong>
+                <span class="block text-[10px] text-slate-400 mt-0.5">₹80 / ₹220 combo</span>
+              </div>
+            </label>
+
+            <label class="cursor-pointer">
+              <input type="radio" name="service" value="Scholarship" class="peer sr-only" onchange="switchService(this.value)">
+              <div class="peer-checked:border-blue-600 peer-checked:bg-blue-50/50 peer-checked:text-blue-900 border border-slate-200 rounded-xl p-3 text-center transition">
+                <i class="fa-solid fa-award text-base mb-1 text-indigo-600 block"></i>
+                <strong>Scholarship</strong>
+                <span class="block text-[10px] text-slate-400 mt-0.5">₹100 flat</span>
+              </div>
+            </label>
+
+            <label class="cursor-pointer col-span-2">
+              <input type="radio" name="service" value="PPT Making" class="peer sr-only" onchange="switchService(this.value)">
+              <div class="peer-checked:border-blue-600 peer-checked:bg-blue-50/50 peer-checked:text-blue-900 border border-slate-200 rounded-xl p-3 text-center transition">
+                <i class="fa-solid fa-file-powerpoint text-base mb-1 text-rose-600 block"></i>
+                <strong>PPT & Project File Design</strong>
+                <span class="block text-[10px] text-slate-400 mt-0.5">₹9/slide &bull; ₹80 per 10-slide pack</span>
+              </div>
+            </label>
+          </div>
+
+          <!-- Dynamic Panel 1: Print -->
+          <div id="printSettingsPanel" class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-4">
+            <span class="text-xs font-bold text-slate-800 uppercase tracking-wider block">Print Options</span>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Total Pages</label>
+                <input type="number" id="pages" name="pages" min="1" value="1" class="w-full border border-slate-200 rounded-lg p-2.5 text-sm bg-white font-bold outline-none focus:border-blue-500">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Color Mode</label>
+                <select id="colorType" name="colorType" class="w-full border border-slate-200 rounded-lg p-2.5 text-sm bg-white font-medium outline-none">
+                  <option value="bw">Black & White (₹3/pg)</option>
+                  <option value="color">Full Color (₹7/pg)</option>
+                </select>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Sides</label>
+                <select name="sides" class="w-full border border-slate-200 rounded-lg p-2.5 text-sm bg-white font-medium outline-none">
+                  <option value="Single Sided">Single Sided</option>
+                  <option value="Both Sided">Both Sided</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Binding</label>
+                <select id="binding" name="binding" class="w-full border border-slate-200 rounded-lg p-2.5 text-sm bg-white font-medium outline-none">
+                  <option value="none">Stapled (Free)</option>
+                  <option value="spiral">Spiral Binding (+₹35)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dynamic Panel 2: Certificates -->
+          <div id="certPanel" class="hidden bg-amber-50/70 border border-amber-200 rounded-xl p-4 space-y-3">
+            <span class="text-xs font-bold text-amber-900 uppercase tracking-wider block">Certificate Type</span>
+            <select id="certType" name="certType" class="w-full border border-amber-200 rounded-lg p-2.5 text-sm bg-white outline-none">
+              <option value="all_three">All 3 Combo: Caste + Income + Domicile (₹220 Flat)</option>
+              <option value="caste">Caste Certificate Only (₹80)</option>
+              <option value="income">Income Certificate Only (₹80)</option>
+              <option value="domicile">Domicile Certificate Only (₹80)</option>
+            </select>
+          </div>
+
+          <!-- Dynamic Panel 3: PPT -->
+          <div id="pptPanel" class="hidden bg-rose-50/70 border border-rose-200 rounded-xl p-4 space-y-3">
+            <span class="text-xs font-bold text-rose-900 uppercase tracking-wider block">Slide Count</span>
+            <div class="flex items-center gap-3">
+              <input type="number" id="pptSlides" name="pptSlides" min="1" value="10" class="w-28 border border-rose-200 rounded-lg p-2.5 text-sm bg-white font-bold outline-none">
+              <span class="text-xs text-rose-800">slides (₹80 per 10-slide pack, ₹9/extra slide)</span>
+            </div>
+          </div>
+
+          <!-- Step 2: Upload File -->
+          <div>
+            <span class="text-[11px] font-extrabold text-blue-600 uppercase tracking-widest">Step 2 of 3</span>
+            <h3 class="text-base font-black text-slate-900 mt-0.5">Upload File</h3>
+            <div class="mt-2.5 relative border-2 border-dashed border-slate-200 hover:border-blue-500 rounded-2xl p-6 text-center transition bg-slate-50/50">
+              <input type="file" id="fileInput" name="document" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" onchange="previewFile(this)">
+              <div class="space-y-2 pointer-events-none">
+                <i class="fa-solid fa-cloud-arrow-up text-2xl text-blue-600"></i>
+                <p class="text-xs font-bold text-slate-800" id="fileLabel">Click or Drag & Drop Document Here</p>
+                <p class="text-[11px] text-slate-400">PDF, Word, PNG, JPG (Max 35 MB)</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: Contact & Routine -->
+          <div>
+            <span class="text-[11px] font-extrabold text-blue-600 uppercase tracking-widest">Step 3 of 3</span>
+            <h3 class="text-base font-black text-slate-900 mt-0.5">Student Details & Pickup</h3>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Full Name *</label>
+                <input type="text" name="name" required placeholder="e.g. Aman Verma" class="w-full border border-slate-200 rounded-lg p-2.5 text-sm outline-none focus:border-blue-500">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">WhatsApp Number *</label>
+                <input type="tel" name="phone" required placeholder="10-digit phone" class="w-full border border-slate-200 rounded-lg p-2.5 text-sm outline-none focus:border-blue-500">
+              </div>
+            </div>
+
+            <div class="mt-3">
+              <label class="block text-xs font-semibold text-slate-600 mb-1">Pickup Stop & Time *</label>
+              <select name="collegePickup" required class="w-full border border-slate-200 rounded-lg p-2.5 text-sm bg-white font-medium outline-none focus:border-blue-500">
+                <optgroup label="Morning Schedule">
+                  <option value="NIET College (Morning 8:00 AM)">NIET College Main Gate &bull; 8:00 AM</option>
+                  <option value="GL Bajaj (Morning 8:30 AM)">GL Bajaj Institute &bull; 8:30 AM</option>
+                  <option value="ITS Eng College (Morning 8:45 AM)">ITS Engineering College &bull; 8:45 AM</option>
+                  <option value="KCC College (Morning 9:00 AM)">KCC College &bull; 9:00 AM</option>
+                  <option value="Accurate Institute (Morning 9:15 AM)">Accurate Institute &bull; 9:15 AM</option>
+                </optgroup>
+                <optgroup label="Evening Schedule">
+                  <option value="NIET College (Evening 5:00 PM)">NIET College Main Gate &bull; 5:00 PM</option>
+                  <option value="GL Bajaj (Evening 5:15 PM)">GL Bajaj Institute &bull; 5:15 PM</option>
+                  <option value="ITS Eng College (Evening 5:30 PM)">ITS Engineering College &bull; 5:30 PM</option>
+                  <option value="KCC College (Evening 5:45 PM)">KCC College &bull; 5:45 PM</option>
+                  <option value="Accurate Institute (Evening 6:00 PM)">Accurate Institute &bull; 6:00 PM</option>
+                </optgroup>
+              </select>
+            </div>
+
+            <div class="mt-3">
+              <label class="block text-xs font-semibold text-slate-600 mb-1">Instructions / Notes (Optional)</label>
+              <textarea name="instructions" rows="2" placeholder="Specific page ranges, exam name, etc." class="w-full border border-slate-200 rounded-lg p-2.5 text-xs outline-none focus:border-blue-500"></textarea>
+            </div>
+          </div>
+
+          <button type="submit" id="submitOrderBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-sm py-3.5 px-6 rounded-xl transition shadow-md flex items-center justify-center gap-2">
+            <span>Proceed to UPI Payment</span>
+            <i class="fa-solid fa-lock text-xs"></i>
+          </button>
+        </form>
+      </div>
+
+      <!-- Right Summary Panel -->
+      <div class="lg:col-span-5 lg:sticky lg:top-24 space-y-4">
+        <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+            <h4 class="text-xs font-black uppercase tracking-wider text-slate-800">Order Summary</h4>
+            <span class="text-[10px] bg-slate-100 text-slate-600 font-bold px-2 py-0.5 rounded">Real-Time</span>
+          </div>
+
+          <div class="divide-y divide-slate-100 text-xs py-2">
+            <div class="flex justify-between py-2 text-slate-600">
+              <span id="summaryServiceName">Document Printing</span>
+              <span id="summaryBasePrice" class="font-bold text-slate-800">₹3</span>
+            </div>
+            <div id="summaryBindingRow" class="flex justify-between py-2 text-slate-600">
+              <span>Binding Option</span>
+              <span id="summaryBindingPrice" class="font-bold text-slate-800">Stapled (Free)</span>
+            </div>
+            <div class="flex justify-between py-2 text-slate-600">
+              <span>Campus Gate Delivery</span>
+              <span class="font-bold text-emerald-600">FREE</span>
+            </div>
+          </div>
+
+          <div class="border-t-2 border-dashed border-slate-200 pt-3 mt-1 flex justify-between items-baseline">
+            <div>
+              <span class="text-xs font-bold text-slate-400 block uppercase">Total Amount</span>
+              <span class="text-[10px] text-red-600 font-bold">100% Advance Payment Only</span>
+            </div>
+            <span id="summaryGrandTotal" class="text-3xl font-black text-slate-900 tracking-tight">₹3</span>
+          </div>
+        </div>
+
+        <div class="bg-blue-900 text-white rounded-2xl p-5 shadow-sm space-y-3">
+          <div class="flex items-center gap-2 text-xs font-bold text-blue-200">
+            <i class="fa-solid fa-shield-halved text-base text-yellow-400"></i>
+            E-Commerce Protected Checkout
+          </div>
+          <p class="text-[11px] text-blue-100 leading-relaxed">
+            Upon clicking "Proceed", you will receive a secure payment checkout screen with one of our active PhonePe QR codes and matching UPI IDs.
+          </p>
+          <div class="text-[10px] text-blue-300 border-t border-blue-800 pt-2">
+            ⚠️ No Return / No Refund Policy once documents are printed.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+    <!-- PROFESSIONAL PAYMENT GATEWAY MODAL (Razorpay / Stripe Style) -->
+  <div id="gatewayModal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-2xl max-w-md w-full shadow-2xl border border-slate-100 overflow-hidden transform transition-all">
+      
+      <!-- Gateway Header -->
+      <div class="bg-gradient-to-r from-purple-700 via-indigo-700 to-blue-700 p-5 text-white flex justify-between items-start">
+        <div>
+          <span class="text-[10px] bg-white/20 text-white font-extrabold px-2 py-0.5 rounded uppercase tracking-wider">UPI Checkout Gateway</span>
+          <h3 class="text-lg font-black mt-1">Easy Print Re &bull; Shrikant Chauhan</h3>
+          <p class="text-xs text-purple-200">Order ID: <strong id="modalOrderId" class="text-white">#0</strong></p>
+        </div>
+        <div class="text-right">
+          <span class="text-[10px] text-purple-200 block uppercase">Payable</span>
+          <span id="modalAmount" class="text-2xl font-black text-yellow-300">₹0</span>
+        </div>
+      </div>
+
+      <!-- Gateway Body -->
+      <div class="p-6 space-y-4 text-center">
+        
+        <!-- QR Container -->
+        <div class="bg-slate-50 border border-slate-200 p-3 rounded-2xl inline-block shadow-inner">
+          <img id="modalQrImage" src="qr1.jpg" alt="Payment QR" class="w-44 h-44 object-contain mx-auto rounded-lg">
+          <span class="text-[10px] text-slate-400 block mt-1 font-medium">Scan using PhonePe / GPay / Paytm</span>
+        </div>
+
+        <!-- Dynamic UPI ID Row -->
+        <div class="bg-slate-100 p-3 rounded-xl flex items-center justify-between text-left">
+          <div class="truncate mr-2">
+            <span class="text-[10px] text-slate-500 font-semibold block uppercase">Designated UPI ID</span>
+            <span id="modalUpiText" class="font-mono text-xs font-bold text-slate-900">7379046819-3@ibl</span>
+          </div>
+          <button type="button" onclick="copyModalUpi()" class="bg-slate-900 hover:bg-slate-800 text-white text-[11px] font-bold px-3 py-1.5 rounded-lg flex items-center gap-1 shrink-0">
+            <i class="fa-regular fa-copy"></i>
+            <span id="copyModalBtnText">Copy</span>
+          </button>
+        </div>
+
+        <!-- Direct UPI Link for Mobile Users -->
+        <a id="modalDeepLink" href="#" class="block w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs py-2.5 rounded-xl transition">
+          <i class="fa-solid fa-mobile-screen mr-1"></i> Open in UPI App (GPay/PhonePe/Paytm)
+        </a>
+
+        <!-- UTR / Reference Input Form -->
+        <form id="utrForm" onsubmit="submitUtr(event)" class="bg-blue-50/70 border border-blue-200 rounded-xl p-4 text-left space-y-2">
+          <label class="block text-xs font-bold text-blue-900">
+            Enter 12-Digit UPI Ref / UTR No. *
+          </label>
+          <input type="text" id="utrInput" required pattern="[0-9a-zA-Z]{6,16}" placeholder="e.g. 403819284719" class="w-full border border-blue-300 rounded-lg p-2.5 text-xs font-mono font-bold tracking-wider uppercase bg-white outline-none focus:ring-2 focus:ring-blue-500">
+          <p class="text-[10px] text-blue-700">Check your PhonePe/GPay transaction details for this 12-digit number.</p>
+          <button type="submit" id="utrSubmitBtn" class="w-full bg-blue-700 hover:bg-blue-800 text-white text-xs font-bold py-2.5 rounded-lg transition mt-2">
+            Submit Payment & Complete Order
+          </button>
+        </form>
+
+        <div id="utrAlert" class="hidden p-3 rounded-xl text-xs font-semibold"></div>
+
+        <p class="text-[10px] text-red-500 font-semibold">
+          ⚠️ Strict Policy: Orders are non-refundable once printing begins.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // 3 Random PhonePe QR Codes + Matching UPI IDs
+    const upiList = [
+      { qr: 'qr1.jpg', upi: '7379046819-3@ibl' },
+      { qr: 'qr2.jpg', upi: '7379046819@ybl' },
+      { qr: 'qr3.jpg', upi: '7379046819-2@ybl' }
+    ];
+
+    let currentSelectedUpi = upiList[Math.floor(Math.random() * upiList.length)];
+    let activeOrderId = null;
+    let currentTotal = 3;
+
+    function copyModalUpi() {
+      navigator.clipboard.writeText(currentSelectedUpi.upi).then(() => {
+        const btn = document.getElementById('copyModalBtnText');
+        btn.innerText = 'Copied!';
+        setTimeout(() => { btn.innerText = 'Copy'; }, 2000);
+      });
+    }
+
+    function previewFile(input) {
+      const label = document.getElementById('fileLabel');
+      if (input.files && input.files[0]) {
+        label.innerText = `Selected: ${input.files[0].name} (${(input.files[0].size / (1024*1024)).toFixed(2)} MB)`;
+        label.classList.add('text-blue-600');
+      } else {
+        label.innerText = 'Click or Drag & Drop Document Here';
+        label.classList.remove('text-blue-600');
+      }
+    }
+
+    function switchService(serviceName) {
+      document.getElementById('printSettingsPanel').classList.toggle('hidden', serviceName !== 'Printing');
+      document.getElementById('certPanel').classList.toggle('hidden', serviceName !== 'Certificates');
+      document.getElementById('pptPanel').classList.toggle('hidden', serviceName !== 'PPT Making');
+      document.getElementById('summaryBindingRow').classList.toggle('hidden', serviceName !== 'Printing');
+      recalculate();
+    }
+
+    function recalculate() {
+      const service = document.querySelector('input[name="service"]:checked').value;
+      let total = 0;
+      let serviceTitle = 'Document Printing';
+      let bindingText = 'Stapled (Free)';
+
+      if (service === 'Printing') {
+        const pages = parseInt(document.getElementById('pages').value) || 0;
+        const color = document.getElementById('colorType').value;
+        const binding = document.getElementById('binding').value;
+        const rate = (color === 'color') ? 7 : 3;
+
+        total = pages * rate;
+        serviceTitle = `Print (${pages} pgs @ ₹${rate})`;
+
+        if (binding === 'spiral') {
+          total += 35;
+          bindingText = 'Spiral Binding (+₹35)';
+        }
+      } else if (service === 'Govt Exam Form') {
+        total = 100;
+        serviceTitle = 'Govt Exam Form Filling';
+      } else if (service === 'Scholarship') {
+        total = 100;
+        serviceTitle = 'Scholarship Registration';
+      } else if (service === 'Certificates') {
+        const certType = document.getElementById('certType').value;
+        if (certType === 'all_three') {
+          total = 220;
+          serviceTitle = 'All 3 Combo (Caste+Inc+Dom)';
+        } else {
+          total = 80;
+          serviceTitle = 'Single Certificate (₹80)';
+        }
+      } else if (service === 'PPT Making') {
+        const slides = parseInt(document.getElementById('pptSlides').value) || 0;
+        const fullPacks = Math.floor(slides / 10);
+        const extra = slides % 10;
+        total = (fullPacks * 80) + (extra * 9);
+        serviceTitle = `PPT Presentation (${slides} slides)`;
+      }
+
+      currentTotal = total;
+      document.getElementById('summaryServiceName').innerText = serviceTitle;
+      document.getElementById('summaryBasePrice').innerText = `₹${total}`;
+      document.getElementById('summaryBindingPrice').innerText = bindingText;
+      document.getElementById('summaryGrandTotal').innerText = `₹${total}`;
+      return total;
+    }
+
+    ['pages', 'colorType', 'binding', 'certType', 'pptSlides'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener('input', recalculate);
+    });
+
+    // Form Submit -> Creates Order & Opens Gateway Modal
+    document.getElementById('eprOrderForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('submitOrderBtn');
+      btn.disabled = true;
+      btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin mr-1"></i> Opening Gateway...`;
+
+      const formData = new FormData(e.target);
+      formData.append('upiUsed', currentSelectedUpi.upi);
+
+      try {
+        const res = await fetch('/api/orders/initiate', { method: 'POST', body: formData });
+        const data = await res.json();
+
+        if (res.ok) {
+          activeOrderId = data.orderId;
+          document.getElementById('modalOrderId').innerText = `#${data.orderId}`;
+          document.getElementById('modalAmount').innerText = `₹${data.totalAmount}`;
+          document.getElementById('modalQrImage').src = currentSelectedUpi.qr;
+          document.getElementById('modalUpiText').innerText = currentSelectedUpi.upi;
+          document.getElementById('modalDeepLink').href = `upi://pay?pa=${currentSelectedUpi.upi}&pn=Shrikant%20Chauhan&am=${data.totalAmount}&cu=INR&tn=EPR%20Order%20${data.orderId}`;
+          
+          document.getElementById('gatewayModal').classList.remove('hidden');
+        } else {
+          alert('Error: ' + (data.error || 'Failed to initialize order.'));
+        }
+      } catch (err) {
+        alert('Server Error: ' + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = `<span>Proceed to UPI Payment</span><i class="fa-solid fa-lock text-xs"></i>`;
+      }
+    });
+
+    // Submits the 12-digit UTR verification code
+    async function submitUtr(e) {
+      e.preventDefault();
+      const utr = document.getElementById('utrInput').value.trim();
+      const btn = document.getElementById('utrSubmitBtn');
+      const alertBox = document.getElementById('utrAlert');
+
+      btn.disabled = true;
+      btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin mr-1"></i> Verifying...`;
+
+      try {
+        const res = await fetch('/api/orders/verify-payment', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ orderId: activeOrderId, utrNumber: utr })
+        });
+        const data = await res.json();
+
+        if (res.ok) {
+          alertBox.className = 'p-4 rounded-xl text-xs font-semibold bg-emerald-100 text-emerald-900 border border-emerald-300 block text-left';
+          alertBox.innerHTML = `
+            🎉 <strong>Payment Logged! Order #${activeOrderId} Confirmed!</strong><br>
+            UTR: <code>${utr}</code><br>
+            Your document will be printed and brought to your pickup spot on schedule!
+          `;
+          document.getElementById('utrForm').classList.add('hidden');
+        } else {
+          throw new Error(data.error || 'Verification failed');
+        }
+      } catch (err) {
+        alertBox.className = 'p-3 rounded-xl text-xs font-semibold bg-red-100 text-red-900 border border-red-300 block';
+        alertBox.innerText = err.message;
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = 'Submit Payment & Complete Order';
+      }
+    }
+
+    recalculate();
+  </script>
+</body>
+</html>
